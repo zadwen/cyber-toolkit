@@ -60,6 +60,20 @@ class InstallerTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'requires Kali'):
                 app.main(['--profile', 'kali-everything'])
 
+    def test_interactive_missing_packages_can_be_skipped(self):
+        with patch.object(app.sys.stdin, 'isatty', return_value=True), patch('builtins.input', return_value='y'):
+            self.assertTrue(app.accept_missing(['sagemath', 'zeek']))
+
+    def test_interactive_missing_packages_decline_by_default(self):
+        with patch.object(app.sys.stdin, 'isatty', return_value=True), patch('builtins.input', return_value=''):
+            self.assertFalse(app.accept_missing(['zeek']))
+
+    def test_noninteractive_missing_packages_need_explicit_flag(self):
+        with patch.object(app.sys.stdin, 'isatty', return_value=False), patch('builtins.input') as prompt:
+            self.assertFalse(app.accept_missing(['zeek']))
+            self.assertTrue(app.accept_missing(['zeek'], allowed=True))
+            prompt.assert_not_called()
+
     def test_cpu_torch_requires_ai(self):
         with self.assertRaises(ValueError):
             app.main(['--profile', 'ctf', '--torch', 'cpu'])

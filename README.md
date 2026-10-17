@@ -14,6 +14,14 @@ cd cyber-toolkit
 ./install.sh --install
 ```
 
+Already cloned it? Update the existing folder instead:
+
+```bash
+cd ~/cyber-toolkit
+git pull --ff-only
+./install.sh --install
+```
+
 The interactive menu asks which type of student or practitioner you are. Choose one or several numbers, inspect the plan, and confirm installation. To preview the menu without installing, run `./install.sh`.
 
 ## Profiles
@@ -71,13 +79,15 @@ See [CATALOG.md](CATALOG.md) for every catalog entry. Availability varies by dis
 
 - Uses packages from the machine's existing APT repositories and Python applications from PyPI through pipx. It does not add Kali repositories to Ubuntu or Zorin, execute downloaded shell scripts, or change GPU drivers, firewall rules, startup apps or kernel settings.
 - Refreshes APT metadata, checks package candidates, then installs available packages with `--no-install-recommends` and `--no-remove`.
-- Missing APT packages stop installation before selected packages are installed unless `--allow-missing` was supplied. Kali-only catalog entries are omitted and listed on other distributions.
+- When APT packages are unavailable, interactive installs offer to skip them and continue. Pressing Enter declines. Noninteractive installs stop unless `--allow-missing` was supplied. Kali-only catalog entries are omitted and listed on other distributions.
 - APT packages follow the configured distribution versions. Python dependencies follow their current package releases; this is not a reproducibly version-locked environment.
 - System packages such as auditd, Suricata or iperf3 may install/start services according to the distribution's packaging defaults. Exclude those tools if you do not want them.
 - Repeating installation does not force upgrades of pipx tools. Manage updates with APT and `pipx upgrade TOOL`. AI pip installation follows normal pip behavior in its existing environment.
 - APT operations are not transactional with Python installs. Failures do not roll back successful earlier operations. Every actual run writes a JSON result with installed, unavailable, omitted and failed items under `~/.local/state/cyber-toolkit/` (respects `XDG_STATE_HOME`). A required failure exits nonzero; intentionally allowed missing packages produce a clearly marked partial report.
 
 Large profiles can require substantial storage. Review APT's size estimate when it runs; the installer prints current free space but does not predict the download size. Wordlists, game images, training datasets, AI models and GPU drivers are not bundled.
+
+On Ubuntu/Zorin, `sagemath` and `zeek` may be unavailable in the configured repositories. You can skip them and install the rest with `./install.sh --profile all --install --allow-missing`. They remain listed as unavailable in the report.
 
 ## AI environment
 

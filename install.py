@@ -74,6 +74,17 @@ def choose(data):
     return list(dict.fromkeys(names[n - 1] for n in numbers))
 
 
+def accept_missing(packages, allowed=False):
+    if not packages:
+        return True
+    print('Unavailable on this system: ' + ', '.join(packages))
+    if allowed:
+        return True
+    if sys.stdin.isatty():
+        return input('Skip these packages and install the available tools? [y/N] ').strip().lower() in ('y', 'yes')
+    return False
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--profile', action='append', default=[], help='Profile ID; repeat or separate with commas')
@@ -164,7 +175,7 @@ def main(argv=None):
         available = [p for p in apt_tools if candidate_exists(p)]
         report['unavailable'] = sorted(set(apt_tools) - set(available))
         save()
-        if report['unavailable'] and not args.allow_missing:
+        if not accept_missing(report['unavailable'], args.allow_missing):
             raise ValueError('Unavailable APT packages: ' + ', '.join(report['unavailable']) + '. No selected packages installed. Use --allow-missing to continue without them.')
         if available:
             # --no-remove prevents resolving dependencies by removing installed software.
