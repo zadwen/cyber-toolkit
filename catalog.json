@@ -1,0 +1,1093 @@
+{
+  "schema_version": 1,
+  "profiles": {
+    "cyber-student": {
+      "label": "Cybersecurity student",
+      "groups": [
+        "base",
+        "network",
+        "web",
+        "forensics"
+      ],
+      "note": "Foundations, networking, web labs and file analysis."
+    },
+    "ctf": {
+      "label": "CTF player",
+      "groups": [
+        "base",
+        "network",
+        "web",
+        "passwords",
+        "forensics",
+        "ctf",
+        "reverse"
+      ],
+      "note": "Web, pwn, crypto, reverse engineering, steganography and forensics."
+    },
+    "pentest": {
+      "label": "Penetration testing lab",
+      "groups": [
+        "base",
+        "network",
+        "web",
+        "passwords",
+        "wireless",
+        "kali"
+      ],
+      "note": "Authorized assessment tools; Kali-only entries are identified on other distributions."
+    },
+    "blue-team": {
+      "label": "Blue team / SOC student",
+      "groups": [
+        "base",
+        "network",
+        "forensics",
+        "blue"
+      ],
+      "note": "Traffic analysis, host auditing, file analysis and static analysis. Some distro packages may start services."
+    },
+    "forensics": {
+      "label": "Digital forensics student",
+      "groups": [
+        "base",
+        "network",
+        "forensics"
+      ],
+      "note": "Disk, file, metadata and memory investigation."
+    },
+    "reverse": {
+      "label": "Reverse engineering / pwn",
+      "groups": [
+        "base",
+        "reverse",
+        "ctf"
+      ],
+      "note": "Debuggers, ELF tools, mathematics and binary exploitation utilities."
+    },
+    "ai-student": {
+      "label": "AI / data science student",
+      "groups": [
+        "base",
+        "developer"
+      ],
+      "note": "Adds an isolated environment with JupyterLab, NumPy, pandas, SciPy, Matplotlib and scikit-learn; optional CPU PyTorch."
+    },
+    "developer": {
+      "label": "Secure software developer",
+      "groups": [
+        "base",
+        "developer",
+        "blue"
+      ],
+      "note": "Build and audit tools; use --exclude to omit host monitoring packages."
+    },
+    "all": {
+      "label": "All curated tools",
+      "groups": [
+        "base",
+        "network",
+        "web",
+        "passwords",
+        "wireless",
+        "forensics",
+        "ctf",
+        "reverse",
+        "blue",
+        "developer",
+        "kali"
+      ],
+      "note": "Large installation. This is the complete catalog, not every security tool in existence."
+    },
+    "kali-everything": {
+      "label": "Kali complete distribution toolset",
+      "groups": [
+        "base"
+      ],
+      "note": "Kali Linux only: official kali-linux-everything metapackage; very large."
+    }
+  },
+  "tools": [
+    {
+      "id": "git",
+      "manager": "apt",
+      "package": "git",
+      "group": "base",
+      "description": "Version control",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "curl",
+      "manager": "apt",
+      "package": "curl",
+      "group": "base",
+      "description": "HTTP client",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "wget",
+      "manager": "apt",
+      "package": "wget",
+      "group": "base",
+      "description": "File downloader",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "jq",
+      "manager": "apt",
+      "package": "jq",
+      "group": "base",
+      "description": "JSON processor",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "ripgrep",
+      "manager": "apt",
+      "package": "ripgrep",
+      "group": "base",
+      "description": "Fast text search",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "tmux",
+      "manager": "apt",
+      "package": "tmux",
+      "group": "base",
+      "description": "Terminal multiplexer",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "unzip",
+      "manager": "apt",
+      "package": "unzip",
+      "group": "base",
+      "description": "ZIP extraction",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "p7zip-full",
+      "manager": "apt",
+      "package": "p7zip-full",
+      "group": "base",
+      "description": "Archive utilities",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "file",
+      "manager": "apt",
+      "package": "file",
+      "group": "base",
+      "description": "File identification",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "python3-venv",
+      "manager": "apt",
+      "package": "python3-venv",
+      "group": "base",
+      "description": "Python virtual environments",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "python3-pip",
+      "manager": "apt",
+      "package": "python3-pip",
+      "group": "base",
+      "description": "Python package manager",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "pipx",
+      "manager": "apt",
+      "package": "pipx",
+      "group": "base",
+      "description": "Isolated Python applications",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "build-essential",
+      "manager": "apt",
+      "package": "build-essential",
+      "group": "base",
+      "description": "C/C++ compiler and build tools",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "pkg-config",
+      "manager": "apt",
+      "package": "pkg-config",
+      "group": "base",
+      "description": "Build dependency discovery",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "libssl-dev",
+      "manager": "apt",
+      "package": "libssl-dev",
+      "group": "base",
+      "description": "TLS development headers",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "libffi-dev",
+      "manager": "apt",
+      "package": "libffi-dev",
+      "group": "base",
+      "description": "FFI development headers",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "python3-dev",
+      "manager": "apt",
+      "package": "python3-dev",
+      "group": "base",
+      "description": "Python development headers",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "nmap",
+      "manager": "apt",
+      "package": "nmap",
+      "group": "network",
+      "description": "Network discovery and port scanning",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "tcpdump",
+      "manager": "apt",
+      "package": "tcpdump",
+      "group": "network",
+      "description": "Packet capture",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "tshark",
+      "manager": "apt",
+      "package": "tshark",
+      "group": "network",
+      "description": "Command-line packet analysis",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "wireshark",
+      "manager": "apt",
+      "package": "wireshark",
+      "group": "network",
+      "description": "Graphical packet analysis",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "netcat-openbsd",
+      "manager": "apt",
+      "package": "netcat-openbsd",
+      "group": "network",
+      "description": "TCP/UDP client",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "socat",
+      "manager": "apt",
+      "package": "socat",
+      "group": "network",
+      "description": "Network relay",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "dnsutils",
+      "manager": "apt",
+      "package": "dnsutils",
+      "group": "network",
+      "description": "DNS lookup utilities",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "whois",
+      "manager": "apt",
+      "package": "whois",
+      "group": "network",
+      "description": "Domain registration lookup",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "traceroute",
+      "manager": "apt",
+      "package": "traceroute",
+      "group": "network",
+      "description": "Network route diagnostics",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "iproute2",
+      "manager": "apt",
+      "package": "iproute2",
+      "group": "network",
+      "description": "IP and routing tools",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "mtr-tiny",
+      "manager": "apt",
+      "package": "mtr-tiny",
+      "group": "network",
+      "description": "Route quality diagnostics",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "iperf3",
+      "manager": "apt",
+      "package": "iperf3",
+      "group": "network",
+      "description": "Network throughput testing",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "openssl",
+      "manager": "apt",
+      "package": "openssl",
+      "group": "network",
+      "description": "TLS and cryptography",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "openvpn",
+      "manager": "apt",
+      "package": "openvpn",
+      "group": "network",
+      "description": "Lab VPN client",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "sqlmap",
+      "manager": "apt",
+      "package": "sqlmap",
+      "group": "web",
+      "description": "SQL injection testing",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "nikto",
+      "manager": "apt",
+      "package": "nikto",
+      "group": "web",
+      "description": "Web server assessment",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "gobuster",
+      "manager": "apt",
+      "package": "gobuster",
+      "group": "web",
+      "description": "Web content discovery",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "ffuf",
+      "manager": "apt",
+      "package": "ffuf",
+      "group": "web",
+      "description": "Web fuzzing",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "whatweb",
+      "manager": "apt",
+      "package": "whatweb",
+      "group": "web",
+      "description": "Web technology identification",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "dirb",
+      "manager": "apt",
+      "package": "dirb",
+      "group": "web",
+      "description": "Web directory discovery",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "wafw00f",
+      "manager": "apt",
+      "package": "wafw00f",
+      "group": "web",
+      "description": "WAF identification",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "hashcat",
+      "manager": "apt",
+      "package": "hashcat",
+      "group": "passwords",
+      "description": "Offline password recovery",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "john",
+      "manager": "apt",
+      "package": "john",
+      "group": "passwords",
+      "description": "Password recovery",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "hydra",
+      "manager": "apt",
+      "package": "hydra",
+      "group": "passwords",
+      "description": "Authentication testing",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "crunch",
+      "manager": "apt",
+      "package": "crunch",
+      "group": "passwords",
+      "description": "Wordlist generation",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "cewl",
+      "manager": "apt",
+      "package": "cewl",
+      "group": "passwords",
+      "description": "Lab wordlist generation",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "aircrack-ng",
+      "manager": "apt",
+      "package": "aircrack-ng",
+      "group": "wireless",
+      "description": "Wireless auditing suite",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "iw",
+      "manager": "apt",
+      "package": "iw",
+      "group": "wireless",
+      "description": "Wireless device diagnostics",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "sleuthkit",
+      "manager": "apt",
+      "package": "sleuthkit",
+      "group": "forensics",
+      "description": "Filesystem forensics",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "testdisk",
+      "manager": "apt",
+      "package": "testdisk",
+      "group": "forensics",
+      "description": "Partition and file recovery",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "foremost",
+      "manager": "apt",
+      "package": "foremost",
+      "group": "forensics",
+      "description": "File carving",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "binwalk",
+      "manager": "apt",
+      "package": "binwalk",
+      "group": "forensics",
+      "description": "Firmware and embedded file analysis",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "libimage-exiftool-perl",
+      "manager": "apt",
+      "package": "libimage-exiftool-perl",
+      "group": "forensics",
+      "description": "File metadata inspection",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "exif",
+      "manager": "apt",
+      "package": "exif",
+      "group": "forensics",
+      "description": "EXIF inspection",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "pngcheck",
+      "manager": "apt",
+      "package": "pngcheck",
+      "group": "forensics",
+      "description": "PNG validation",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "jpeginfo",
+      "manager": "apt",
+      "package": "jpeginfo",
+      "group": "forensics",
+      "description": "JPEG inspection",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "yara",
+      "manager": "apt",
+      "package": "yara",
+      "group": "forensics",
+      "description": "Pattern matching",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "sqlite3",
+      "manager": "apt",
+      "package": "sqlite3",
+      "group": "forensics",
+      "description": "SQLite inspection",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "hexedit",
+      "manager": "apt",
+      "package": "hexedit",
+      "group": "forensics",
+      "description": "Hex editor",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "xxd",
+      "manager": "apt",
+      "package": "xxd",
+      "group": "forensics",
+      "description": "Hex dumps",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "steghide",
+      "manager": "apt",
+      "package": "steghide",
+      "group": "ctf",
+      "description": "Steganography",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "outguess",
+      "manager": "apt",
+      "package": "outguess",
+      "group": "ctf",
+      "description": "Steganography analysis",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "zbar-tools",
+      "manager": "apt",
+      "package": "zbar-tools",
+      "group": "ctf",
+      "description": "Barcode/QR decoding",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "qrencode",
+      "manager": "apt",
+      "package": "qrencode",
+      "group": "ctf",
+      "description": "QR generation",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "sagemath",
+      "manager": "apt",
+      "package": "sagemath",
+      "group": "ctf",
+      "description": "Symbolic mathematics",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "fcrackzip",
+      "manager": "apt",
+      "package": "fcrackzip",
+      "group": "ctf",
+      "description": "ZIP password recovery",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "gdb",
+      "manager": "apt",
+      "package": "gdb",
+      "group": "reverse",
+      "description": "Native debugger",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "gdb-multiarch",
+      "manager": "apt",
+      "package": "gdb-multiarch",
+      "group": "reverse",
+      "description": "Cross-architecture debugger",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "binutils",
+      "manager": "apt",
+      "package": "binutils",
+      "group": "reverse",
+      "description": "Binary inspection",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "strace",
+      "manager": "apt",
+      "package": "strace",
+      "group": "reverse",
+      "description": "System-call tracing",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "ltrace",
+      "manager": "apt",
+      "package": "ltrace",
+      "group": "reverse",
+      "description": "Library-call tracing",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "patchelf",
+      "manager": "apt",
+      "package": "patchelf",
+      "group": "reverse",
+      "description": "ELF modification",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "nasm",
+      "manager": "apt",
+      "package": "nasm",
+      "group": "reverse",
+      "description": "Assembler",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "valgrind",
+      "manager": "apt",
+      "package": "valgrind",
+      "group": "reverse",
+      "description": "Memory debugging",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "checksec",
+      "manager": "apt",
+      "package": "checksec",
+      "group": "reverse",
+      "description": "Binary protection checks",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "radare2",
+      "manager": "apt",
+      "package": "radare2",
+      "group": "reverse",
+      "description": "Reverse engineering framework",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "lynis",
+      "manager": "apt",
+      "package": "lynis",
+      "group": "blue",
+      "description": "Host configuration audit",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "clamav",
+      "manager": "apt",
+      "package": "clamav",
+      "group": "blue",
+      "description": "File malware scanning",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "auditd",
+      "manager": "apt",
+      "package": "auditd",
+      "group": "blue",
+      "description": "Linux audit tools",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "suricata",
+      "manager": "apt",
+      "package": "suricata",
+      "group": "blue",
+      "description": "Network IDS engine",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "zeek",
+      "manager": "apt",
+      "package": "zeek",
+      "group": "blue",
+      "description": "Network security monitoring",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "rkhunter",
+      "manager": "apt",
+      "package": "rkhunter",
+      "group": "blue",
+      "description": "Host integrity checks",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "shellcheck",
+      "manager": "apt",
+      "package": "shellcheck",
+      "group": "developer",
+      "description": "Shell linting",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "cmake",
+      "manager": "apt",
+      "package": "cmake",
+      "group": "developer",
+      "description": "Build generator",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "ninja-build",
+      "manager": "apt",
+      "package": "ninja-build",
+      "group": "developer",
+      "description": "Build executor",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "sqlitebrowser",
+      "manager": "apt",
+      "package": "sqlitebrowser",
+      "group": "developer",
+      "description": "SQLite GUI",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "git-lfs",
+      "manager": "apt",
+      "package": "git-lfs",
+      "group": "developer",
+      "description": "Large file support",
+      "kali_only": false,
+      "source": "https://packages.debian.org/"
+    },
+    {
+      "id": "seclists",
+      "manager": "apt",
+      "package": "seclists",
+      "group": "kali",
+      "description": "Security testing wordlists",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "ghidra",
+      "manager": "apt",
+      "package": "ghidra",
+      "group": "kali",
+      "description": "Reverse engineering GUI",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "burpsuite",
+      "manager": "apt",
+      "package": "burpsuite",
+      "group": "kali",
+      "description": "Web application testing proxy",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "zaproxy",
+      "manager": "apt",
+      "package": "zaproxy",
+      "group": "kali",
+      "description": "Web security scanner",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "metasploit-framework",
+      "manager": "apt",
+      "package": "metasploit-framework",
+      "group": "kali",
+      "description": "Security assessment framework",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "responder",
+      "manager": "apt",
+      "package": "responder",
+      "group": "kali",
+      "description": "Lab name-resolution testing",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "netexec",
+      "manager": "apt",
+      "package": "netexec",
+      "group": "kali",
+      "description": "Network assessment toolkit",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "bloodhound",
+      "manager": "apt",
+      "package": "bloodhound",
+      "group": "kali",
+      "description": "Directory relationship analysis",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "feroxbuster",
+      "manager": "apt",
+      "package": "feroxbuster",
+      "group": "kali",
+      "description": "Recursive content discovery",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "nuclei",
+      "manager": "apt",
+      "package": "nuclei",
+      "group": "kali",
+      "description": "Template-based security checks",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "subfinder",
+      "manager": "apt",
+      "package": "subfinder",
+      "group": "kali",
+      "description": "Subdomain discovery",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "amass",
+      "manager": "apt",
+      "package": "amass",
+      "group": "kali",
+      "description": "Attack surface discovery",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "rustscan",
+      "manager": "apt",
+      "package": "rustscan",
+      "group": "kali",
+      "description": "Port scanning",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "chisel",
+      "manager": "apt",
+      "package": "chisel",
+      "group": "kali",
+      "description": "Lab tunneling utility",
+      "kali_only": true,
+      "source": "https://www.kali.org/tools/"
+    },
+    {
+      "id": "pwntools",
+      "manager": "pipx",
+      "package": "pwntools",
+      "group": "ctf",
+      "description": "CTF binary exploitation toolkit",
+      "source": "https://pypi.org/project/pwntools/"
+    },
+    {
+      "id": "ropgadget",
+      "manager": "pipx",
+      "package": "ROPGadget",
+      "group": "ctf",
+      "description": "ROP gadget analysis",
+      "source": "https://pypi.org/project/ROPGadget/"
+    },
+    {
+      "id": "ropper",
+      "manager": "pipx",
+      "package": "ropper",
+      "group": "ctf",
+      "description": "Binary gadget analysis",
+      "source": "https://pypi.org/project/ropper/"
+    },
+    {
+      "id": "mitmproxy",
+      "manager": "pipx",
+      "package": "mitmproxy",
+      "group": "web",
+      "description": "Interactive HTTP debugging proxy",
+      "source": "https://pypi.org/project/mitmproxy/"
+    },
+    {
+      "id": "httpie",
+      "manager": "pipx",
+      "package": "httpie",
+      "group": "web",
+      "description": "Human-friendly HTTP client",
+      "source": "https://pypi.org/project/httpie/"
+    },
+    {
+      "id": "volatility3",
+      "manager": "pipx",
+      "package": "volatility3",
+      "group": "forensics",
+      "description": "Memory forensics",
+      "source": "https://pypi.org/project/volatility3/"
+    },
+    {
+      "id": "semgrep",
+      "manager": "pipx",
+      "package": "semgrep",
+      "group": "blue",
+      "description": "Static analysis",
+      "source": "https://pypi.org/project/semgrep/"
+    },
+    {
+      "id": "bandit",
+      "manager": "pipx",
+      "package": "bandit",
+      "group": "blue",
+      "description": "Python security checks",
+      "source": "https://pypi.org/project/bandit/"
+    },
+    {
+      "id": "pip-audit",
+      "manager": "pipx",
+      "package": "pip-audit",
+      "group": "blue",
+      "description": "Python dependency audit",
+      "source": "https://pypi.org/project/pip-audit/"
+    },
+    {
+      "id": "ruff",
+      "manager": "pipx",
+      "package": "ruff",
+      "group": "developer",
+      "description": "Python linting and formatting",
+      "source": "https://pypi.org/project/ruff/"
+    },
+    {
+      "id": "pre-commit",
+      "manager": "pipx",
+      "package": "pre-commit",
+      "group": "developer",
+      "description": "Repository checks",
+      "source": "https://pypi.org/project/pre-commit/"
+    }
+  ],
+  "ai_packages": [
+    "jupyterlab",
+    "numpy",
+    "pandas",
+    "scipy",
+    "matplotlib",
+    "seaborn",
+    "scikit-learn",
+    "sympy",
+    "ipykernel",
+    "requests"
+  ]
+}
